@@ -21,6 +21,29 @@ namespace BookHaven
             InitializeComponent();
             LoadCustomers();
             LoadBooks();
+            if (LoggedInUserDetails.UserRole == "Clerk")
+            {
+                btnADash.Visible = false;
+                btnBook.Visible = false;
+                btnReport.Visible = false;
+                btnSale.Visible = false;
+                btnSupplier.Visible = false;
+                btnOrder.Visible = false;
+                btnCus.Visible = false;
+                btnBack.Visible = true;
+
+            }
+            else
+            {
+                btnADash.Visible = true;
+                btnBook.Visible = true;
+                btnReport.Visible = true;
+                btnSale.Visible = true;
+                btnSupplier.Visible = true;
+                btnOrder.Visible = true;
+                btnCus.Visible = true;
+                btnBack.Visible = false;
+            }
         }
 
         private void Form6_Load(object sender, EventArgs e)
@@ -116,7 +139,9 @@ namespace BookHaven
             totalAmount += totalPrice;
 
             // ✅ Ensure dgvCart has a "BookID" column
-            dgvCart.Rows.Add(cmbBook.SelectedValue, cmbBook.Text, lblAutor.Text, price, quantity, totalPrice);
+            dgvCart.Rows.Add(cmbBook.SelectedValue, cmbCus.Text, cmbBook.Text, txtQty.Text, lblAutor.Text, lblPrice.Text, lblQty.Text, totalAmount);
+            dgvCart.Refresh();
+
             lblTotal.Text = totalAmount.ToString("F2");
 
             txtQty.Clear();
@@ -141,7 +166,7 @@ namespace BookHaven
 
         private void button13_Click(object sender, EventArgs e)
         {
-            if (cmbCus.SelectedValue == null || dgvCart.Rows.Count == 0)
+                if (cmbCus.SelectedValue == null || dgvCart.Rows.Count == 0)
             {
                 MessageBox.Show("Please select a customer and add books to proceed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -161,9 +186,9 @@ namespace BookHaven
                     {
                         // 1️⃣ Insert into Sales Table
                         string querySale = @"
-                            INSERT INTO Sales (CustomerID, TotalAmount, Discount, SubTotal, SaleDate) 
-                            VALUES (@CustomerID, @TotalAmount, @Discount, @SubTotal, GETDATE()); 
-                            SELECT SCOPE_IDENTITY();";
+                    INSERT INTO Sales (CustomerID, TotalAmount, Discount, SubTotal, SaleDate) 
+                    VALUES (@CustomerID, @TotalAmount, @Discount, @SubTotal, GETDATE()); 
+                    SELECT SCOPE_IDENTITY();";
 
                         SqlCommand cmdSale = new SqlCommand(querySale, conn, transaction);
                         cmdSale.Parameters.AddWithValue("@CustomerID", cmbCus.SelectedValue);
@@ -174,18 +199,21 @@ namespace BookHaven
                         int saleID = Convert.ToInt32(cmdSale.ExecuteScalar()); // Get SaleID
 
                         // 2️⃣ Insert SaleDetails & Update Stock
+                        StringBuilder orderPreview = new StringBuilder();
+                        orderPreview.AppendLine($"Order ID: {saleID}");
+                        orderPreview.AppendLine($"Customer ID: {cmbCus.SelectedValue}");
+                        orderPreview.AppendLine($"-----------------------------------");
+                        orderPreview.AppendLine($"Book ID\tQty");
+
                         foreach (DataGridViewRow row in dgvCart.Rows)
                         {
-                            // ✅ Ensure correct column name
-                            if (row.Cells["BookID"].Value == null)
+                            if (row.IsNewRow || row.Cells["ID"].Value == null || row.Cells["ID"].Value == DBNull.Value)
                             {
-                                MessageBox.Show("Error: Missing BookID in cart.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                transaction.Rollback();
-                                return;
+                                continue; // Skip this row
                             }
 
-                            int bookID = Convert.ToInt32(row.Cells["BookID"].Value);
-                            int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+                            int bookID = Convert.ToInt32(row.Cells["ID"].Value);
+                            int quantity = Convert.ToInt32(row.Cells["Qty"].Value);
 
                             // Insert into SaleDetails
                             string querySaleDetails = "INSERT INTO SaleDetails (SaleID, BookID, Quantity) VALUES (@SaleID, @BookID, @Quantity)";
@@ -205,17 +233,30 @@ namespace BookHaven
                                 cmdUpdateStock.Parameters.AddWithValue("@BookID", bookID);
                                 cmdUpdateStock.ExecuteNonQuery();
                             }
+
+                            // Add to order preview
+                            orderPreview.AppendLine($"{bookID}\t{quantity}");
                         }
 
                         transaction.Commit(); // ✅ Commit Transaction
-                        MessageBox.Show("Sale completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                              // MessageBox.Show("Sale completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        // 3️⃣ Reset Form
+                        // 3️⃣ Show Order Preview
+                        orderPreview.AppendLine($"-----------------------------------");
+                        orderPreview.AppendLine($"Total: {totalAmount:C}");
+                        orderPreview.AppendLine($"Discount: {discount:C}");
+                        orderPreview.AppendLine($"Subtotal: {subtotal:C}");
+
+                        MessageBox.Show(orderPreview.ToString(), "Order Preview", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // 4️⃣ Reset Form
                         dgvCart.Rows.Clear();
                         totalAmount = 0;
                         lblTotal.Text = "0.00";
                         txtDiscount.Clear();
                         txtSub.Text = "0.00";
+                        cmbBook.SelectedIndex = 0;
+                        cmbCus.SelectedIndex = 0;
                     }
                     catch (Exception ex)
                     {
@@ -253,7 +294,9 @@ namespace BookHaven
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            Form9 form9 = new Form9();
+            form9.Show();
+            this.Close();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -261,6 +304,18 @@ namespace BookHaven
             Form6 form7 = new Form6();
             form7.Show();
             this.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            Form11 form11 = new Form11();
+            form11.Show();
+            this.Hide();
         }
     }
 }

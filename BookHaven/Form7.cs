@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using BCrypt.Net;
+using BCrypt.Net;
 
 
 namespace BookHaven
@@ -37,7 +37,7 @@ namespace BookHaven
             }
 
             // Hash the password before saving
-            //string hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtPw.Text);
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtPw.Text);
 
             try
             {
@@ -51,7 +51,7 @@ namespace BookHaven
                         cmd.Parameters.AddWithValue("@FullName", txtFname.Text);
                         cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
                         cmd.Parameters.AddWithValue("@Username", txtUname.Text);
-                        cmd.Parameters.AddWithValue("@Password", txtPw.Text);
+                        cmd.Parameters.AddWithValue("@Password", hashedPassword);
                         cmd.Parameters.AddWithValue("@Role", "Clerk"); // Role is always "Clerk"
 
                         cmd.ExecuteNonQuery();

@@ -12,7 +12,7 @@ namespace BookHaven
         {
             InitializeComponent();
         }
-        
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -41,34 +41,45 @@ namespace BookHaven
                 try
                 {
                     conn.Open();
-                    string query = "SELECT Role FROM Users WHERE Username = @Username AND Password = @Password";
+                    string query = "SELECT Password, Role FROM Users WHERE Username = @Username";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@Username", username);
-                        cmd.Parameters.AddWithValue("@Password", password);
-
-                        object result = cmd.ExecuteScalar();
-                        if (result != null)
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            string role = result.ToString();
-                            MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            this.Hide(); 
-
-                            if (role == "Admin")
+                            if (reader.Read())
                             {
-                                Admin adminForm = new Admin();
-                                adminForm.Show();
+                                string hashedPassword = reader["Password"].ToString();
+                                string role = reader["Role"].ToString();
+
+                                // Verify the entered password against the stored hashed password
+                                if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
+                                {
+                                    MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    this.Hide();
+
+                                    LoggedInUserDetails.UserRole = role;
+
+                                    if (role == "Admin")
+                                    {
+                                        Admin adminForm = new Admin();
+                                        adminForm.Show();
+                                    }
+                                    else if (role == "Clerk")
+                                    {
+                                        Cleark clerkForm = new Cleark();
+                                        clerkForm.Show();
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
-                            else if (role == "Clerk") 
+                            else
                             {
-                                Cleark clerkForm = new Cleark();
-                                clerkForm.Show();
+                                MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -77,6 +88,16 @@ namespace BookHaven
                     MessageBox.Show("Database error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

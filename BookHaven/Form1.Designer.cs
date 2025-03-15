@@ -36,12 +36,14 @@
             btnLog = new Button();
             label3 = new Label();
             txtPW = new TextBox();
+            button1 = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
             label1.Font = new Font("Tahoma", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(140, 36);
             label1.Name = "label1";
@@ -69,16 +71,17 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
+            label2.ForeColor = SystemColors.ActiveCaptionText;
             label2.Location = new Point(29, 84);
             label2.Name = "label2";
-            label2.Size = new Size(100, 24);
+            label2.Size = new Size(130, 28);
             label2.TabIndex = 3;
             label2.Text = "Username";
             // 
             // groupBox1
             // 
-            groupBox1.BackColor = SystemColors.ActiveBorder;
+            groupBox1.BackColor = Color.DimGray;
             groupBox1.Controls.Add(btnLog);
             groupBox1.Controls.Add(btnCl);
             groupBox1.Controls.Add(label3);
@@ -105,10 +108,11 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
+            label3.ForeColor = SystemColors.ActiveCaptionText;
             label3.Location = new Point(30, 154);
             label3.Name = "label3";
-            label3.Size = new Size(94, 24);
+            label3.Size = new Size(123, 28);
             label3.TabIndex = 6;
             label3.Text = "Password";
             // 
@@ -121,17 +125,35 @@
             txtPW.TabIndex = 5;
             txtPW.TextChanged += textBox2_TextChanged;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Red;
+            button1.Font = new Font("Tahoma", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.Location = new Point(12, 538);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 42);
+            button1.TabIndex = 8;
+            button1.Text = "Exit";
+            button1.UseVisualStyleBackColor = false;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.AppWorkspace;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(648, 592);
+            ControlBox = false;
+            Controls.Add(button1);
             Controls.Add(txtUname);
             Controls.Add(label1);
             Controls.Add(groupBox1);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "Login";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
+            Load += Login_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -148,5 +170,6 @@
         private Label label3;
         private TextBox txtPW;
         private Button btnLog;
+        private Button button1;
     }
 }

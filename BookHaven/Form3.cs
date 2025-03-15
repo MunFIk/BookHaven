@@ -21,6 +21,33 @@ namespace BookHaven
             LoadSuppliers();
             ClearFields();
             LoadBooks();
+            if (LoggedInUserDetails.UserRole == "Clerk")
+            {
+                btnADash.Visible = false;
+                btnBook.Visible = false;
+                btnReport.Visible = false;
+                btnSale.Visible = false;
+                btnSupplier.Visible = false;
+                btnOrder.Visible = false;
+                btnCus.Visible = false;
+                btnBack.Visible = true;
+                btnDel.Visible = false;
+
+            }
+            else
+            {
+                btnADash.Visible = true;
+                btnBook.Visible = true;
+                btnReport.Visible = true;
+                btnSale.Visible = true;
+                btnSupplier.Visible = true;
+                btnOrder.Visible = true;
+                btnCus.Visible = true;
+                btnBack.Visible = false;
+                btnDel.Visible = true;
+
+
+            }
 
         }
 
@@ -299,6 +326,20 @@ namespace BookHaven
         {
             Form6 form7 = new Form6();
             form7.Show();
+            this.Close();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Cleark clerk = new Cleark();
+            clerk.Show();
+            this.Hide();
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            Form9 form9 = new Form9();
+            form9.Show();
             this.Close();
         }
     }

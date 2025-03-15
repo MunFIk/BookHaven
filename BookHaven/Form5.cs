@@ -66,7 +66,7 @@ namespace BookHaven
             DTGsup.Controls.Add(dgvSuppliers);
             DTGsup.Controls.Add(button13);
             DTGsup.Controls.Add(button14);
-            DTGsup.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DTGsup.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             DTGsup.Location = new Point(793, 128);
             DTGsup.Name = "DTGsup";
             DTGsup.Size = new Size(544, 494);
@@ -315,6 +315,7 @@ namespace BookHaven
             button7.TabIndex = 11;
             button7.Text = "Reporting Analysis";
             button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
             // 
             // button8
             // 
@@ -335,6 +336,7 @@ namespace BookHaven
             button3.TabIndex = 9;
             button3.Text = "Order Management";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button4
             // 
@@ -382,12 +384,15 @@ namespace BookHaven
             // Supplier
             // 
             ClientSize = new Size(1371, 685);
+            ControlBox = false;
             Controls.Add(DTGsup);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(label1);
             Name = "Supplier";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Supplier";
+            Load += Supplier_Load;
             DTGsup.ResumeLayout(false);
             ((ISupportInitialize)dgvSuppliers).EndInit();
             groupBox2.ResumeLayout(false);
@@ -654,6 +659,25 @@ namespace BookHaven
         {
             Form6 form7 = new Form6();
             form7.Show();
+            this.Close();
+        }
+
+        private void Supplier_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Form11 form11 = new Form11();
+            form11.Show();
+            this.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form9 form9 = new Form9();
+            form9.Show();
             this.Close();
         }
     }

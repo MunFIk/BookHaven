@@ -29,39 +29,46 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            btnBook = new Button();
             button9 = new Button();
             label1 = new Label();
             button3 = new Button();
             button4 = new Button();
             button2 = new Button();
-            button1 = new Button();
-            label3 = new Label();
-            dataGridView2 = new DataGridView();
-            dataGridView1 = new DataGridView();
-            label2 = new Label();
-            dataGridView3 = new DataGridView();
             label4 = new Label();
+            dgvBooks = new DataGridView();
+            label2 = new Label();
+            txtSearchBook = new TextBox();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvBooks).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
             groupBox1.BackColor = SystemColors.ActiveBorder;
+            groupBox1.Controls.Add(btnBook);
             groupBox1.Controls.Add(button9);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(button3);
             groupBox1.Controls.Add(button4);
             groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(button1);
             groupBox1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(2, 1);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(313, 694);
             groupBox1.TabIndex = 8;
             groupBox1.TabStop = false;
+            // 
+            // btnBook
+            // 
+            btnBook.Font = new Font("Segoe UI", 12F);
+            btnBook.Location = new Point(17, 124);
+            btnBook.Name = "btnBook";
+            btnBook.Size = new Size(270, 51);
+            btnBook.TabIndex = 15;
+            btnBook.Text = "Book Management";
+            btnBook.UseVisualStyleBackColor = true;
+            btnBook.Click += btnBook_Click;
             // 
             // button9
             // 
@@ -95,6 +102,7 @@
             button3.TabIndex = 9;
             button3.Text = "Order Management";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button4
             // 
@@ -116,95 +124,64 @@
             button2.TabIndex = 7;
             button2.Text = "Customer Management";
             button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            button1.Font = new Font("Segoe UI", 12F);
-            button1.Location = new Point(14, 124);
-            button1.Name = "button1";
-            button1.Size = new Size(270, 51);
-            button1.TabIndex = 2;
-            button1.Text = "Book Management";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(822, 64);
-            label3.Name = "label3";
-            label3.Size = new Size(149, 24);
-            label3.TabIndex = 23;
-            label3.Text = "Weekly Reports";
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(813, 92);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowHeadersWidth = 51;
-            dataGridView2.Size = new Size(442, 254);
-            dataGridView2.TabIndex = 22;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(354, 92);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(442, 254);
-            dataGridView1.TabIndex = 21;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(381, 64);
-            label2.Name = "label2";
-            label2.Size = new Size(120, 24);
-            label2.TabIndex = 20;
-            label2.Text = "Daily Report";
-            // 
-            // dataGridView3
-            // 
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Location = new Point(354, 379);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.RowHeadersWidth = 51;
-            dataGridView3.Size = new Size(901, 254);
-            dataGridView3.TabIndex = 25;
+            button2.Click += button2_Click;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(724, 352);
+            label4.Location = new Point(730, 43);
             label4.Name = "label4";
-            label4.Size = new Size(128, 24);
+            label4.Size = new Size(150, 24);
             label4.TabIndex = 24;
-            label4.Text = "Books Report";
+            label4.Text = "Avialable Books";
+            // 
+            // dgvBooks
+            // 
+            dgvBooks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvBooks.Location = new Point(360, 125);
+            dgvBooks.Name = "dgvBooks";
+            dgvBooks.RowHeadersWidth = 51;
+            dgvBooks.Size = new Size(901, 528);
+            dgvBooks.TabIndex = 25;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Tahoma", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(1068, 92);
+            label2.Name = "label2";
+            label2.Size = new Size(62, 22);
+            label2.TabIndex = 28;
+            label2.Text = "Search";
+            // 
+            // txtSearchBook
+            // 
+            txtSearchBook.Font = new Font("Tahoma", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSearchBook.Location = new Point(1134, 89);
+            txtSearchBook.Name = "txtSearchBook";
+            txtSearchBook.Size = new Size(127, 29);
+            txtSearchBook.TabIndex = 27;
+            txtSearchBook.TextChanged += txtQty_TextChanged;
             // 
             // Cleark
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1284, 694);
-            Controls.Add(dataGridView3);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(dataGridView2);
-            Controls.Add(dataGridView1);
+            ControlBox = false;
             Controls.Add(label2);
+            Controls.Add(txtSearchBook);
+            Controls.Add(dgvBooks);
+            Controls.Add(label4);
             Controls.Add(groupBox1);
             Name = "Cleark";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Cleark Dasboard";
             Load += Cleark_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvBooks).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -214,15 +191,13 @@
         private GroupBox groupBox1;
         private Button button9;
         private Label label1;
-        private Button button3;
         private Button button4;
         private Button button2;
-        private Button button1;
-        private Label label3;
-        private DataGridView dataGridView2;
-        private DataGridView dataGridView1;
-        private Label label2;
-        private DataGridView dataGridView3;
+        private Button button3;
         private Label label4;
+        private DataGridView dgvBooks;
+        private Button btnBook;
+        private Label label2;
+        private TextBox txtSearchBook;
     }
 }

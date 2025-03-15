@@ -21,11 +21,12 @@ namespace BookHaven
             LoadClerks();
             LoadBooks();
             LoadCustomers();
+            LoadSalesData();
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -118,6 +119,40 @@ namespace BookHaven
                 MessageBox.Show("Error loading books: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void LoadSalesData()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string query = @"
+                SELECT 
+                    Sales.SaleID, 
+                    Customers.FullName, 
+                    Sales.TotalAmount, 
+                    Sales.Discount, 
+                    Sales.SubTotal, 
+                    Sales.SaleDate,
+                    Sales.DeliveryType
+
+                FROM Sales
+                INNER JOIN Customers ON Sales.CustomerID = Customers.CustomerID
+                ORDER BY Sales.SaleDate DESC";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    dgvSales.DataSource = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading sales data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void LoadCustomers()
         {
             try
@@ -140,6 +175,20 @@ namespace BookHaven
             {
                 MessageBox.Show("Error loading customer data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form9 form9 = new Form9();
+            form9.Show();
+            this.Close();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Form11 form11 = new Form11();
+            form11.Show();
+            this.Hide();
         }
     }
 }

@@ -31,23 +31,23 @@
             label1 = new Label();
             groupBox1 = new GroupBox();
             button9 = new Button();
-            button7 = new Button();
-            button8 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button2 = new Button();
-            button1 = new Button();
+            btnReport = new Button();
+            btnSuplier = new Button();
+            btnOrder = new Button();
+            btnSale = new Button();
+            btnCus = new Button();
+            btnBook = new Button();
             label2 = new Label();
-            dataGridView1 = new DataGridView();
+            dgvSales = new DataGridView();
             dgvBooks = new DataGridView();
             dgvClerks = new DataGridView();
             dgvCustomers = new DataGridView();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            button10 = new Button();
+            btnAddClerk = new Button();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSales).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvBooks).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvClerks).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCustomers).BeginInit();
@@ -68,12 +68,12 @@
             groupBox1.BackColor = SystemColors.ActiveBorder;
             groupBox1.Controls.Add(button9);
             groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(button7);
-            groupBox1.Controls.Add(button8);
-            groupBox1.Controls.Add(button3);
-            groupBox1.Controls.Add(button4);
-            groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(btnReport);
+            groupBox1.Controls.Add(btnSuplier);
+            groupBox1.Controls.Add(btnOrder);
+            groupBox1.Controls.Add(btnSale);
+            groupBox1.Controls.Add(btnCus);
+            groupBox1.Controls.Add(btnBook);
             groupBox1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(-2, 10);
             groupBox1.Name = "groupBox1";
@@ -86,7 +86,7 @@
             button9.BackColor = Color.Red;
             button9.Font = new Font("Segoe UI", 12F);
             button9.ForeColor = SystemColors.ButtonFace;
-            button9.Location = new Point(76, 646);
+            button9.Location = new Point(76, 616);
             button9.Name = "button9";
             button9.Size = new Size(141, 42);
             button9.TabIndex = 14;
@@ -94,69 +94,71 @@
             button9.UseVisualStyleBackColor = false;
             button9.Click += button9_Click;
             // 
-            // button7
+            // btnReport
             // 
-            button7.Font = new Font("Segoe UI", 12F);
-            button7.Location = new Point(14, 471);
-            button7.Name = "button7";
-            button7.Size = new Size(270, 51);
-            button7.TabIndex = 11;
-            button7.Text = "Reporting Analysis";
-            button7.UseVisualStyleBackColor = true;
+            btnReport.Font = new Font("Segoe UI", 12F);
+            btnReport.Location = new Point(14, 471);
+            btnReport.Name = "btnReport";
+            btnReport.Size = new Size(270, 51);
+            btnReport.TabIndex = 11;
+            btnReport.Text = "Reporting Analysis";
+            btnReport.UseVisualStyleBackColor = true;
+            btnReport.Click += button7_Click;
             // 
-            // button8
+            // btnSuplier
             // 
-            button8.Font = new Font("Segoe UI", 12F);
-            button8.Location = new Point(14, 397);
-            button8.Name = "button8";
-            button8.Size = new Size(270, 51);
-            button8.TabIndex = 10;
-            button8.Text = "Suplier Management";
-            button8.UseVisualStyleBackColor = true;
-            button8.Click += button8_Click;
+            btnSuplier.Font = new Font("Segoe UI", 12F);
+            btnSuplier.Location = new Point(14, 397);
+            btnSuplier.Name = "btnSuplier";
+            btnSuplier.Size = new Size(270, 51);
+            btnSuplier.TabIndex = 10;
+            btnSuplier.Text = "Suplier Management";
+            btnSuplier.UseVisualStyleBackColor = true;
+            btnSuplier.Click += button8_Click;
             // 
-            // button3
+            // btnOrder
             // 
-            button3.Font = new Font("Segoe UI", 12F);
-            button3.Location = new Point(14, 328);
-            button3.Name = "button3";
-            button3.Size = new Size(270, 51);
-            button3.TabIndex = 9;
-            button3.Text = "Order Management";
-            button3.UseVisualStyleBackColor = true;
+            btnOrder.Font = new Font("Segoe UI", 12F);
+            btnOrder.Location = new Point(14, 328);
+            btnOrder.Name = "btnOrder";
+            btnOrder.Size = new Size(270, 51);
+            btnOrder.TabIndex = 9;
+            btnOrder.Text = "Order Management";
+            btnOrder.UseVisualStyleBackColor = true;
+            btnOrder.Click += button3_Click;
             // 
-            // button4
+            // btnSale
             // 
-            button4.Font = new Font("Segoe UI", 12F);
-            button4.Location = new Point(14, 259);
-            button4.Name = "button4";
-            button4.Size = new Size(270, 51);
-            button4.TabIndex = 8;
-            button4.Text = "Sales Transaction";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
+            btnSale.Font = new Font("Segoe UI", 12F);
+            btnSale.Location = new Point(14, 259);
+            btnSale.Name = "btnSale";
+            btnSale.Size = new Size(270, 51);
+            btnSale.TabIndex = 8;
+            btnSale.Text = "Sales Transaction";
+            btnSale.UseVisualStyleBackColor = true;
+            btnSale.Click += button4_Click;
             // 
-            // button2
+            // btnCus
             // 
-            button2.Font = new Font("Segoe UI", 12F);
-            button2.Location = new Point(14, 192);
-            button2.Name = "button2";
-            button2.Size = new Size(270, 51);
-            button2.TabIndex = 7;
-            button2.Text = "Customer Management";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            btnCus.Font = new Font("Segoe UI", 12F);
+            btnCus.Location = new Point(14, 192);
+            btnCus.Name = "btnCus";
+            btnCus.Size = new Size(270, 51);
+            btnCus.TabIndex = 7;
+            btnCus.Text = "Customer Management";
+            btnCus.UseVisualStyleBackColor = true;
+            btnCus.Click += button2_Click;
             // 
-            // button1
+            // btnBook
             // 
-            button1.Font = new Font("Segoe UI", 12F);
-            button1.Location = new Point(14, 124);
-            button1.Name = "button1";
-            button1.Size = new Size(270, 51);
-            button1.TabIndex = 2;
-            button1.Text = "Book Management";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnBook.Font = new Font("Segoe UI", 12F);
+            btnBook.Location = new Point(14, 124);
+            btnBook.Name = "btnBook";
+            btnBook.Size = new Size(270, 51);
+            btnBook.TabIndex = 2;
+            btnBook.Text = "Book Management";
+            btnBook.UseVisualStyleBackColor = true;
+            btnBook.Click += button1_Click;
             // 
             // label2
             // 
@@ -168,14 +170,14 @@
             label2.TabIndex = 3;
             label2.Text = "Total Sales";
             // 
-            // dataGridView1
+            // dgvSales
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(336, 95);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(442, 254);
-            dataGridView1.TabIndex = 15;
+            dgvSales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSales.Location = new Point(336, 95);
+            dgvSales.Name = "dgvSales";
+            dgvSales.RowHeadersWidth = 51;
+            dgvSales.Size = new Size(442, 254);
+            dgvSales.TabIndex = 15;
             // 
             // dgvBooks
             // 
@@ -234,32 +236,33 @@
             label5.TabIndex = 21;
             label5.Text = "Staff Performance";
             // 
-            // button10
+            // btnAddClerk
             // 
-            button10.BackColor = Color.Blue;
-            button10.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button10.ForeColor = SystemColors.ButtonFace;
-            button10.Location = new Point(1096, 12);
-            button10.Name = "button10";
-            button10.Size = new Size(148, 32);
-            button10.TabIndex = 15;
-            button10.Text = "Add New Cleark";
-            button10.UseVisualStyleBackColor = false;
-            button10.Click += button10_Click;
+            btnAddClerk.BackColor = Color.Blue;
+            btnAddClerk.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAddClerk.ForeColor = SystemColors.ButtonFace;
+            btnAddClerk.Location = new Point(1075, 20);
+            btnAddClerk.Name = "btnAddClerk";
+            btnAddClerk.Size = new Size(169, 48);
+            btnAddClerk.TabIndex = 15;
+            btnAddClerk.Text = "Add New Cleark";
+            btnAddClerk.UseVisualStyleBackColor = false;
+            btnAddClerk.Click += button10_Click;
             // 
             // Admin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1256, 735);
-            Controls.Add(button10);
+            ControlBox = false;
+            Controls.Add(btnAddClerk);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(dgvClerks);
             Controls.Add(dgvCustomers);
             Controls.Add(dgvBooks);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvSales);
             Controls.Add(groupBox1);
             Controls.Add(label2);
             Name = "Admin";
@@ -268,7 +271,7 @@
             Load += Form2_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSales).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvBooks).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvClerks).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvCustomers).EndInit();
@@ -279,21 +282,21 @@
         #endregion
         private Label label1;
         private GroupBox groupBox1;
-        private Button button2;
-        private Button button1;
+        private Button btnCus;
+        private Button btnBook;
         private Label label2;
-        private Button button7;
-        private Button button8;
-        private Button button3;
-        private Button button4;
+        private Button btnReport;
+        private Button btnSuplier;
+        private Button btnOrder;
+        private Button btnSale;
         private Button button9;
-        private DataGridView dataGridView1;
+        private DataGridView dgvSales;
         private DataGridView dgvBooks;
         private DataGridView dgvClerks;
         private DataGridView dgvCustomers;
         private Label label3;
         private Label label4;
         private Label label5;
-        private Button button10;
+        private Button btnAddClerk;
     }
 }

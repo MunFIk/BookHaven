@@ -30,7 +30,7 @@
         {
             groupBox2 = new GroupBox();
             lblCID = new Label();
-            label6 = new Label();
+            ID = new Label();
             button12 = new Button();
             label5 = new Label();
             txtAdd = new TextBox();
@@ -42,14 +42,15 @@
             label2 = new Label();
             txtFname = new TextBox();
             groupBox1 = new GroupBox();
-            button10 = new Button();
+            btnback = new Button();
+            btnADash = new Button();
             button9 = new Button();
-            button7 = new Button();
-            button8 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button2 = new Button();
-            button1 = new Button();
+            btnReport = new Button();
+            btnSupplier = new Button();
+            btnOrder = new Button();
+            btnSale = new Button();
+            btnCus = new Button();
+            btnBook = new Button();
             label1 = new Label();
             groupBox3 = new GroupBox();
             dgvCustomers = new DataGridView();
@@ -65,7 +66,7 @@
             // 
             groupBox2.BackColor = SystemColors.ActiveBorder;
             groupBox2.Controls.Add(lblCID);
-            groupBox2.Controls.Add(label6);
+            groupBox2.Controls.Add(ID);
             groupBox2.Controls.Add(button12);
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(txtAdd);
@@ -93,15 +94,15 @@
             lblCID.Size = new Size(0, 22);
             lblCID.TabIndex = 24;
             // 
-            // label6
+            // ID
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Tahoma", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(18, 52);
-            label6.Name = "label6";
-            label6.Size = new Size(88, 22);
-            label6.TabIndex = 23;
-            label6.Text = "Full Name";
+            ID.AutoSize = true;
+            ID.Font = new Font("Tahoma", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ID.Location = new Point(18, 52);
+            ID.Name = "ID";
+            ID.Size = new Size(29, 22);
+            ID.TabIndex = 23;
+            ID.Text = "ID";
             // 
             // button12
             // 
@@ -200,14 +201,15 @@
             // groupBox1
             // 
             groupBox1.BackColor = SystemColors.ActiveBorder;
-            groupBox1.Controls.Add(button10);
+            groupBox1.Controls.Add(btnback);
+            groupBox1.Controls.Add(btnADash);
             groupBox1.Controls.Add(button9);
-            groupBox1.Controls.Add(button7);
-            groupBox1.Controls.Add(button8);
-            groupBox1.Controls.Add(button3);
-            groupBox1.Controls.Add(button4);
-            groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(btnReport);
+            groupBox1.Controls.Add(btnSupplier);
+            groupBox1.Controls.Add(btnOrder);
+            groupBox1.Controls.Add(btnSale);
+            groupBox1.Controls.Add(btnCus);
+            groupBox1.Controls.Add(btnBook);
             groupBox1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(2, -2);
             groupBox1.Name = "groupBox1";
@@ -215,18 +217,29 @@
             groupBox1.TabIndex = 25;
             groupBox1.TabStop = false;
             // 
-            // button10
+            // btnback
             // 
-            button10.BackColor = Color.ForestGreen;
-            button10.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button10.ForeColor = SystemColors.ButtonFace;
-            button10.Location = new Point(2, 27);
-            button10.Name = "button10";
-            button10.Size = new Size(146, 42);
-            button10.TabIndex = 15;
-            button10.Text = "<<<Dashboard";
-            button10.UseVisualStyleBackColor = false;
-            button10.Click += button10_Click;
+            btnback.Font = new Font("Segoe UI", 12F);
+            btnback.Location = new Point(6, 75);
+            btnback.Name = "btnback";
+            btnback.Size = new Size(146, 38);
+            btnback.TabIndex = 25;
+            btnback.Text = "<<<Back";
+            btnback.UseVisualStyleBackColor = true;
+            btnback.Click += btnBack_Click;
+            // 
+            // btnADash
+            // 
+            btnADash.BackColor = Color.ForestGreen;
+            btnADash.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnADash.ForeColor = SystemColors.ButtonFace;
+            btnADash.Location = new Point(2, 27);
+            btnADash.Name = "btnADash";
+            btnADash.Size = new Size(146, 42);
+            btnADash.TabIndex = 15;
+            btnADash.Text = "<<<Dashboard";
+            btnADash.UseVisualStyleBackColor = false;
+            btnADash.Click += button10_Click;
             // 
             // button9
             // 
@@ -241,68 +254,70 @@
             button9.UseVisualStyleBackColor = false;
             button9.Click += button9_Click;
             // 
-            // button7
+            // btnReport
             // 
-            button7.Font = new Font("Segoe UI", 12F);
-            button7.Location = new Point(14, 405);
-            button7.Name = "button7";
-            button7.Size = new Size(270, 51);
-            button7.TabIndex = 11;
-            button7.Text = "Reporting Analysis";
-            button7.UseVisualStyleBackColor = true;
+            btnReport.Font = new Font("Segoe UI", 12F);
+            btnReport.Location = new Point(14, 405);
+            btnReport.Name = "btnReport";
+            btnReport.Size = new Size(270, 51);
+            btnReport.TabIndex = 11;
+            btnReport.Text = "Reporting Analysis";
+            btnReport.UseVisualStyleBackColor = true;
+            btnReport.Click += btnReport_Click;
             // 
-            // button8
+            // btnSupplier
             // 
-            button8.Font = new Font("Segoe UI", 12F);
-            button8.Location = new Point(14, 348);
-            button8.Name = "button8";
-            button8.Size = new Size(270, 51);
-            button8.TabIndex = 10;
-            button8.Text = "Suplier Management";
-            button8.UseVisualStyleBackColor = true;
+            btnSupplier.Font = new Font("Segoe UI", 12F);
+            btnSupplier.Location = new Point(14, 348);
+            btnSupplier.Name = "btnSupplier";
+            btnSupplier.Size = new Size(270, 51);
+            btnSupplier.TabIndex = 10;
+            btnSupplier.Text = "Suplier Management";
+            btnSupplier.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnOrder
             // 
-            button3.Font = new Font("Segoe UI", 12F);
-            button3.Location = new Point(14, 291);
-            button3.Name = "button3";
-            button3.Size = new Size(270, 51);
-            button3.TabIndex = 9;
-            button3.Text = "Order Management";
-            button3.UseVisualStyleBackColor = true;
+            btnOrder.Font = new Font("Segoe UI", 12F);
+            btnOrder.Location = new Point(14, 291);
+            btnOrder.Name = "btnOrder";
+            btnOrder.Size = new Size(270, 51);
+            btnOrder.TabIndex = 9;
+            btnOrder.Text = "Order Management";
+            btnOrder.UseVisualStyleBackColor = true;
+            btnOrder.Click += btnOrder_Click;
             // 
-            // button4
+            // btnSale
             // 
-            button4.Font = new Font("Segoe UI", 12F);
-            button4.Location = new Point(14, 234);
-            button4.Name = "button4";
-            button4.Size = new Size(270, 51);
-            button4.TabIndex = 8;
-            button4.Text = "Sales Transaction";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
+            btnSale.Font = new Font("Segoe UI", 12F);
+            btnSale.Location = new Point(14, 234);
+            btnSale.Name = "btnSale";
+            btnSale.Size = new Size(270, 51);
+            btnSale.TabIndex = 8;
+            btnSale.Text = "Sales Transaction";
+            btnSale.UseVisualStyleBackColor = true;
+            btnSale.Click += button4_Click;
             // 
-            // button2
+            // btnCus
             // 
-            button2.Font = new Font("Segoe UI", 12F);
-            button2.Location = new Point(14, 181);
-            button2.Name = "button2";
-            button2.Size = new Size(270, 51);
-            button2.TabIndex = 7;
-            button2.Text = "Customer Management";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            btnCus.Font = new Font("Segoe UI", 12F);
+            btnCus.Location = new Point(14, 181);
+            btnCus.Name = "btnCus";
+            btnCus.Size = new Size(270, 51);
+            btnCus.TabIndex = 7;
+            btnCus.Text = "Customer Management";
+            btnCus.UseVisualStyleBackColor = true;
+            btnCus.Click += button2_Click;
             // 
-            // button1
+            // btnBook
             // 
-            button1.Font = new Font("Segoe UI", 12F);
-            button1.Location = new Point(14, 124);
-            button1.Name = "button1";
-            button1.Size = new Size(270, 51);
-            button1.TabIndex = 2;
-            button1.Text = "Book Management";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnBook.Font = new Font("Segoe UI", 12F);
+            btnBook.Location = new Point(14, 124);
+            btnBook.Name = "btnBook";
+            btnBook.Size = new Size(270, 51);
+            btnBook.TabIndex = 2;
+            btnBook.Text = "Book Management";
+            btnBook.UseVisualStyleBackColor = true;
+            btnBook.Click += button1_Click;
             // 
             // label1
             // 
@@ -365,12 +380,15 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1280, 694);
+            ControlBox = false;
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(label1);
             Name = "Customer";
-            Text = "Customer";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "ID";
+            Load += Customer_Load;
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
@@ -393,20 +411,21 @@
         private Label label2;
         private TextBox txtFname;
         private GroupBox groupBox1;
-        private Button button10;
+        private Button btnADash;
         private Button button9;
-        private Button button7;
-        private Button button8;
-        private Button button3;
-        private Button button4;
-        private Button button2;
-        private Button button1;
+        private Button btnReport;
+        private Button btnSupplier;
+        private Button btnOrder;
+        private Button btnSale;
+        private Button btnCus;
+        private Button btnBook;
         private Label label1;
         private GroupBox groupBox3;
         private DataGridView dgvCustomers;
         private Button btnUp;
         private Button button14;
         private Label lblCID;
-        private Label label6;
+        private Label ID;
+        private Button btnback;
     }
 }

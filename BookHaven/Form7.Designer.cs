@@ -239,7 +239,7 @@
             groupBox3.Controls.Add(dgvClerks);
             groupBox3.Controls.Add(button13);
             groupBox3.Controls.Add(button14);
-            groupBox3.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBox3.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox3.Location = new Point(622, 154);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(591, 415);
@@ -297,11 +297,13 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1299, 697);
+            ControlBox = false;
             Controls.Add(button1);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(label1);
             Name = "Form7";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form7";
             Load += Form7_Load;
             groupBox2.ResumeLayout(false);
